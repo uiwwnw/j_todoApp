@@ -2,10 +2,10 @@ const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-// const extractSass = new ExtractTextPlugin({
-//   filename: '[name].[contenthash].css',
-//   disable: process.env.NODE_ENV === 'development'
-// });
+const extractSass = new ExtractTextPlugin({
+  filename: '[name].[contenthash].css',
+  disable: process.env.NODE_ENV === 'development'
+});
 
 module.exports = {
   context: path.resolve(__dirname, 'src'),
@@ -48,11 +48,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    new ExtractTextPlugin({
-      filename: '[name].[contenthash].css',
-      disable: process.env.NODE_ENV === 'development'
-    })
+    new webpack.HotModuleReplacementPlugin()
   ],
   performance: { hints: false }
 };
